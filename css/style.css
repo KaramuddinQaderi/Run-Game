@@ -1,0 +1,243 @@
+body {
+    background: rgb(144, 144, 144);
+    background-size: cover;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+        "Helvetica Neue", sans-serif;
+    font-weight: bold;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-height: 80vh;
+}
+
+.grid {
+    position: relative;
+    height: 300px;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: black;
+    overflow: hidden;
+    border-radius: 20px;
+    flex-wrap: wrap;
+    padding-top: 4px;
+    padding-bottom: 9px;
+    box-shadow: 0 0 0 0px rgb(0, 0, 0), 10px 10px 80px rgb(0, 0, 0);
+}
+
+.grid::before {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 150%;
+    background: linear-gradient(#ff0000, #00d400);
+    animation: anime 1.5s linear infinite;
+}
+.grid::after {
+    content: "";
+    position: absolute;
+    background: rgb(0, 0, 0);
+    inset: 4px;
+    border-radius: 16px;
+}
+
+@keyframes anime {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.grid div {
+    height: 33.3px;
+    width: 32px;
+    z-index: 100;
+    /* background-color: #00d400; */
+}
+
+.ending-block {
+    background: #ff0000;
+}
+
+.starting-blockcar {
+    background: #00d400;
+}
+
+.log-right,
+.log-left {
+    background: lightcoral;
+}
+
+.l1,
+.l2,
+.l3 {
+    background: lightcoral;
+}
+
+.l4,
+.l5 {
+    background: #073130;
+}
+.car-right,
+.car-left {
+    background: lightgreen;
+}
+
+.c1 {
+    background: rgb(68, 0, 0);
+}
+
+.c2,
+.c3 {
+    background: lightgreen;
+}
+
+h3 {
+    margin-right: 15em;
+}
+
+.time {
+    color: #ff0000;
+    animation: txt 1s linear infinite;
+    margin-bottom: 0%;
+}
+
+.win {
+    color: #00d400;
+    text-shadow: 0 0 10px black, 0 0 20px black, 0 0 40px black, 0 0 80px black, 0 0 120px black;
+}
+@keyframes txt {
+    0% {
+        filter: blur(0.5px) hue-rotate(0deg);
+        text-shadow: 0 0 10px black, 0 0 20px black, 0 0 40px black, 0 0 80px black, 0 0 120px black;
+    }
+
+    30%,
+    70% {
+        filter: blur(0.5px) hue-rotate(720deg);
+        text-shadow: 0 0 10px black, 0 0 20px black, 0 0 40px black, 0 0 80px black, 0 0 120px black;
+    }
+
+    100% {
+        color: transparent;
+        box-shadow: none;
+        filter: blur(0.5px) hue-rotate(0deg);
+    }
+}
+
+.loader {
+    position: relative;
+    font-size: 2em;
+    background: rgb(144, 144, 144);
+    color: #000;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 0.4em;
+    padding: 5px;
+}
+
+.loader span {
+    color: rgb(144, 144, 144);
+    mix-blend-mode: difference;
+}
+
+.loader::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80px;
+    height: 100%;
+    background: #000;
+    animation: run 3s linear infinite;
+}
+
+@keyframes run {
+    0% {
+        left: 0;
+    }
+    50% {
+        left: calc(100% - 80px);
+    }
+    100% {
+        left: 0;
+    }
+}
+
+label {
+    position: relative;
+    width: 200px;
+    height: 70px;
+    cursor: pointer;
+}
+
+label input {
+    opacity: 0%;
+}
+
+label span {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: rgb(144, 144, 144);
+    border-radius: 10px;
+}
+
+label span::before {
+    content: "Start";
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: calc(100% - 6px);
+    height: calc(100% - 6px);
+    background: linear-gradient(to bottom, #081d22, #073130);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5), inset 2px 2px 2px rgba(255, 255, 255, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4em;
+    font-weight: 500;
+    color: #00d400;
+    text-shadow: 0 0 20px rgba(64, 255, 0, 0.524);
+}
+
+label input:checked ~ span::before {
+    content: "Pause";
+    display: flex;
+    color: #ff0000;
+    text-shadow: 0 0 20px rgba(255, 0, 0, 0.524);
+    background: linear-gradient(to top, #081d22, #073130);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5), inset 1px 1px 1px rgba(0, 0, 0, 0.4),
+        inset -1px -1px 4px rgba(255, 255, 255, 002);
+}
+
+label span::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    background: #00d400;
+    border-radius: 50%;
+    box-shadow: 0 0 2px #00d400, 0 0 5px #00d400, 0 0 10px #00d400, 0 0 15px #00d400, 0 0 20px #00d400, 0 0 25px #00d400,
+        0 0 30px #00d400, 0 0 40px #00d400;
+}
+
+label input:checked ~ span::after {
+    background: #ff0000;
+    box-shadow: 0 0 2px #ff0000, 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 15px #ff0000, 0 0 20px #ff0000, 0 0 25px #ff0000,
+        0 0 30px #ff0000, 0 0 40px #ff0000;
+}
+
+.frog {
+    background: #00d400;
+}
